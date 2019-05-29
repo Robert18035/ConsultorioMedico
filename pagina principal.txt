@@ -1,0 +1,67 @@
+
+        <div class="texto-encabezado text-xs-center">
+            <div class="container">
+                <h1 class="display-4 wow bounceIn">Realiza tu consulta de manera virtual</h1>
+                <p class="wow bounceIn" data-wow-delay=".3s">Atendemos a nuestros clientes gracias a la versatilidad de la tecnología.</p>
+                <a href="#" class="btn btn-info btn-lg">Empezar con la consulta</a>
+            </div>
+        </div>
+        <div class="flecha-bajar text-xs-center">
+            <a data-scroll href="#consulta"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+        </div>
+    </section>
+    <section class="consultorio py-1" id="consulta">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-xl-3">
+                    <img src="images/cruz.png" alt="img1">
+                </div>
+                <div class="col-md-8 col-xl-9 wow bounceIn" data-wow-delay=".3s">
+                    <h2 class="h3 text-xs-center text-md-left font-weight-bold">Consultorio médico online profesional.</h2>
+                    <p>Gracias a la ayuda de nuestros diseñadores y programadores hemos logrado conseguir que nuestras consultas sean más dinámicas y sean accesibles para cualquier persona.</p>
+                    <p>Ponemos a tu alcance un servicio adaptado a tus necesidades, con consultas integrales realizadas por médicos profesionales y certificados de las mejores universidades del país los cuales han sido calificados y puestos a prueba para
+                        poder realizar consultas de manera remota con cualquier usuario que requiera una consulta rápida y a un precio accesible. </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <main class="servicios py-1">
+        <div class="container">
+            <h2 class="text-xs-center font-weight-bold">Nuestros Servicios</h2>
+            <div class="row">
+                <article class="col-md-4">
+                    <img src="images/servicio1.png" alt="Servicio Desarrollo de Aplicaciones Mobiles">
+                    <h3><a href="#">Diagnósticos en vivo</a></h3>
+                    <p class="hidden-sm-down">Tus datos y tu diagnóstico son escuchados por un médico profesional en tiempo real, 100% garantizado.</p>
+                    <a href="#" class="btn btn-primary hidden-sm-down">Más información</a>
+                </article>
+                <article class="col-md-4">
+                    <img src="images/servicio2.png" alt="Servicio Consultoría Tecnológica">
+                    <h3><a href="#">Médicos profesionales</a></h3>
+                    <p class="hidden-sm-down">Cada uno de nuestros médicos está calificado para poder realizar la consulta de manera remota, sin la necesidad de tener que hacerla presencial.</p>
+                    <a href="#" class="btn btn-primary hidden-sm-down">Más información</a>
+                </article>
+                <article class="col-md-4">
+                    <img src="images/servicio3.png" alt="Servicio Marketing y publicidad Movil">
+                    <h3><a href="#">Enfermeras calificadas</a></h3>
+                    <p class="hidden-sm-down">Nuestras enfermeras le ayudarán en el proceso de llenado de datos y todo acerca de sus síntomas para poderle dar la atención necesaria.</p>
+                    <a href="#" class="btn btn-primary hidden-sm-down">Más información</a>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <footer class="piedepagina py-1" role="contentinfo">
+        <div class="container">
+            <p>2019 © Consultorio-Médico. Todos los derechos reservados.</p>
+            <ul class="redes-sociales">
+                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true" id="face"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true" id="tweet"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube" aria-hidden="true" id="youtube"></i></a></li>
+            </ul>
+
+        </div>
+    </footer>
+    <a data-scroll class="ir-arriba" href="#encabezado"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a>

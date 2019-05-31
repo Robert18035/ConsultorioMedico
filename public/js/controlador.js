@@ -12,7 +12,8 @@ app.config(function($routeProvider) {
             templateUrl: "../views/registro.html"
         })
         .when("/altaRegistro", {
-            templateUrl: "../views/altaRegistro.html"
+            templateUrl: "../views/altaRegistro.html",
+            controller: "registroPac"
         })
         .otherwise({
             templateUrl: "../views/error.html"
@@ -21,29 +22,13 @@ app.config(function($routeProvider) {
 
 /* -------------------------------- FORMULARIO ALTA REGISTRO -------------------------------*/
 
-app.controller('pacienteController', function($scope) {
-    $scope.persons = {};
-    $scope.edad = 0;
-    $scope.sexo = '';
-    $scope.register = function() {
-        $scope.nameInvalid = false;
-        $scope.emailInvalid = false;
-        $scope.sexInvalid = false;
-        $scope.ageInvalid = false;
-        if (!$scope.registrationForm.nombre.$valid) {
-            $scope.nameInvalid = true;
-        }
-        if (!$scope.registrationForm.email.$valid) {
-            $scope.emailInvalid = true;
-        }
-        if (!$scope.registrationForm.sexo.$valid) {
-            $scope.emailInvalid = true;
-        }
-        if (!$scope.registrationForm.edad.$valid) {
-            $scope.emailInvalid = true;
-        }
-        if ($scope.registrationForm.$valid) {
-            alert("Registro exitoso");
-        }
+app.controller('registroPac', function($scope) {
+    $scope.registrar = function() {
+        var nombre = $scope.paciente.nombre;
+        var email = $scope.paciente.email;
+        $scope.paciente = {};
+        console.log(nombre);
+        console.log(email);
+
     }
 });

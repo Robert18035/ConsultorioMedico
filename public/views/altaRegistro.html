@@ -1,15 +1,19 @@
 <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#/">Inicio</a></li>
-            <li class="breadcrumb-item"><a href="#!registro">Registro</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Registro Paciente</li>
-        </ol>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#/">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="#!registro">Registro</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Registro Paciente</li>
+    </ol>
 </nav>
 <center>
-    <div ng-controller="pacienteController" class="form-group col-md-6 text-xs-left">
-        <section class="container">
-            <form ng-submit="register()" method="post" name="registrationForm">
-                &bull;Nombre&bull;<input type="text" ng-model="persons.nombre" class="form-control" placeholder="Nombre"><br>
+    <div class="form-group col-md-6 text-xs-left">
+        <section class="container" ng-controller="registroPac">
+            <form id="registro" name="registroPaciente" novalidate ng-submit="registrar()">
+                <label for="">&bull;Nombre&bull;</label><br>
+                <input type="text" name="nombre" ng-model="paciente.nombre" class="form-control" placeholder="Nombre" required>
+                <label for="">&bull;Email&bull;</label>
+                <input type="text" name="email" ng-model="paciente.email" class="form-control" placeholder="Email" required><br>
+
                 <center>
                     <input type="submit" value="Registrar" class="btn btn-info">
                 </center>

@@ -19,8 +19,7 @@ app.config(function($routeProvider) {
         });
 });
 
-/* ----------------------------------- VALIDAR FORMULARIO -----------------------------------*/
-
+/* -------------------------------- FORMULARIO ALTA REGISTRO -------------------------------*/
 
 app.controller('pacienteController', function($scope) {
     $scope.persons = {};

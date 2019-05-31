@@ -1,8 +1,15 @@
+<nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#/">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="#!registro">Registro</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Registro Paciente</li>
+        </ol>
+</nav>
 <center>
     <div ng-controller="pacienteController" class="form-group col-md-6 text-xs-left">
         <section class="container">
             <form ng-submit="register()" method="post" name="registrationForm">
-                Nombre: <input type="text" ng-model="persons.nombre" class="form-control" placeholder="Nombre"><br>
+                &bull;Nombre&bull;<input type="text" ng-model="persons.nombre" class="form-control" placeholder="Nombre"><br>
                 <center>
                     <input type="submit" value="Registrar" class="btn btn-info">
                 </center>

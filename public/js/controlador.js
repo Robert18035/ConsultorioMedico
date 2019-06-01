@@ -15,6 +15,10 @@ app.config(function($routeProvider) {
             templateUrl: "../views/altaRegistro.html",
             controller: "registroPac"
         })
+        .when("/medico", {
+            templateUrl: "../views/registroMedico.html",
+            controller: "registroMed"
+        })
         .otherwise({
             templateUrl: "../views/error.html"
         });

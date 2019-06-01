@@ -6,13 +6,21 @@
     </ol>
 </nav>
 <center>
-    <div class="form-group col-md-6 text-xs-left">
+    <div class="form-group col-md-6">
         <section class="container" ng-controller="registroPac">
             <form id="registro" name="registroPaciente" novalidate ng-submit="registrar()">
-                <label for="">&bull;Nombre&bull;</label><br>
-                <input type="text" name="nombre" ng-model="paciente.nombre" class="form-control" placeholder="Nombre" required>
-                <label for="">&bull;Email&bull;</label>
-                <input type="text" name="email" ng-model="paciente.email" class="form-control" placeholder="Email" required><br>
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-user"></span>
+                    </div>
+                    <input type="text" name="nombre" ng-model="paciente.nombre" class="form-control" placeholder="Nombre" required>
+                </div>
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-at"></span>
+                    </div>
+                    <input type="email" name="email" ng-model="paciente.email" class="form-control" placeholder="Email" required><br>
+                </div>
 
                 <center>
                     <input type="submit" value="Registrar" class="btn btn-info">

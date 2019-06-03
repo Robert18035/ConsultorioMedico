@@ -19,6 +19,10 @@ app.config(function($routeProvider) {
             templateUrl: "../views/registroMedico.html",
             controller: "registroMed"
         })
+        .when("/enfermera", {
+            templateUrl: "../views/registroEnfermera.html",
+            controller: "registroEnf"
+        })
         .otherwise({
             templateUrl: "../views/error.html"
         });
@@ -33,6 +37,5 @@ app.controller('registroPac', function($scope) {
         $scope.paciente = {};
         console.log(nombre);
         console.log(email);
-
     }
 });

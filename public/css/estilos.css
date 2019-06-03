@@ -154,11 +154,9 @@ ul li {
 }
 
 .servicios img {
-    flex: 0 0 60px;
+    flex: 0 0 160px;
     overflow: hidden;
     margin-right: 1rem;
-    width: 160px;
-    height: 150px;
 }
 
 .servicios h3 {
@@ -293,19 +291,6 @@ ul li {
     #menu-principal ul li a:hover {
         color: #12afaf;
         border-bottom: 4px solid;
-    }
-    .boton-buscar {
-        margin-left: 1rem;
-        margin-right: 0;
-        order: 2;
-    }
-    #bloque-buscar {
-        order: 3;
-        position: absolute;
-        width: 20rem;
-        right: 3rem;
-        top: 2.8rem;
-        transition: all 0.5s ease;
     }
     .servicios article {
         margin: 1rem 0;

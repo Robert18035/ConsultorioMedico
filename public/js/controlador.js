@@ -12,6 +12,7 @@ app.config(function($routeProvider) {
         .when("/registro", {
             templateUrl: "../views/registro.html"
         })
+        /* ----------------------------------------------------------- */
         .when("/altaRegistro", {
             templateUrl: "../views/altaRegistro.html",
             controller: "registroPac"
@@ -20,7 +21,11 @@ app.config(function($routeProvider) {
             templateUrl: "../views/principal.html",
             controller: "registroPac"
         })
+        /* ----------------------------------------------------------- */
         .when("/medico", {
+            templateUrl: "../views/medico.html"
+        })
+        .when("/regisMedico", {
             templateUrl: "../views/registroMedico.html",
             controller: "registroMed"
         })
@@ -28,7 +33,11 @@ app.config(function($routeProvider) {
             templateUrl: "../views/principal.html",
             controller: "registroMed"
         })
+        /* ----------------------------------------------------------- */
         .when("/enfermera", {
+            templateUrl: "../views/enfermera.html"
+        })
+        .when("/regisEnfermera", {
             templateUrl: "../views/registroEnfermera.html",
             controller: "registroEnf"
         })

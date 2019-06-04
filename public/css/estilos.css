@@ -193,6 +193,20 @@ ul li {
 
 
 /*---------------------------
+    FORMULARIOS DE REGISTRO
+-----------------------------*/
+
+input.ng-invalid.ng-touched {
+    border: 2px solid red;
+}
+
+input[disabled="disabled"] {
+    opacity: 0.4;
+    cursor: not-allowed !important;
+}
+
+
+/*---------------------------
     SECCION PIE DE PAGINA
 -----------------------------*/
 

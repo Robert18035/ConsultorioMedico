@@ -5,3 +5,55 @@
         <li class="breadcrumb-item active" aria-current="page">Registro Médico</li>
     </ol>
 </nav>
+<!-- Correo, Nombre, Contraseña-->
+<center>
+    <div class="form-group col-md-6 ">
+        <section class="container" ng-controller="registroMed">
+            <form name="registroMedico" method="POST" ng-submit="registrarMed()" novalidate>
+                <!-- NOMBRE -->
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-user-md"></span>
+                    </div>
+                    <input type="text" name="nombreMed" ng-model="medico.nombre" class="form-control" placeholder="Nombre" title="Introduce tu nombre" ng-required="true">
+                    <div ng-show="registroMedico.nombreMed.$touched && registroMedico.nombreMed.$invalid">
+                        <small class="text-sm-center">&emsp; Ingresa un nombre válido.</small>
+                    </div>
+                </div>
+                <!-- CORREO -->
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-at"></span>
+                    </div>
+                    <input type="email" name="emailMed" ng-model="medico.email" class="form-control" placeholder="Email" title="Introduce tu correo"><br>
+                    <div ng-show="registroMedico.emailMed.$touched && registroMedico.emailMed.$invalid">
+                        <small class="text-sm-center">&emsp; Ingresa un correo válido.</small>
+                    </div>
+                </div>
+                <!-- CONTRASEÑAS -->
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-key"></span>
+                    </div>
+                    <input type="password" name="password" ng-model="medico.pass" class="form-control" placeholder="Contraseña" title="Introduce tu contraseña"><br>
+                    <div ng-show="registroMedico.password.$touched && registroMedico.password.$invalid">
+                        <small class="text-sm-center">&emsp; Ingresa una contraseña válida.</small>
+                    </div>
+                </div>
+                <!-- VERIFICAR CONTRASEÑA -->
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-unlock-alt"></span>
+                    </div>
+                    <input type="password" name="password2" ng-model="medico.pass2" class="form-control" placeholder="Repetir contraseña" title="Vuelve a introducir tu contraseña"><br>
+                    <div ng-show="registroMedico.password2.$touched && registroMedico.password2.$invalid">
+                        <small class="text-sm-center">&emsp; Las contraseñas no coinciden.</small>
+                    </div>
+                </div>
+                <center>
+                    <input type="submit" value="Registrar" class="btn btn-info" ng-disabled="registroMedico.$invalid">
+                </center>
+            </form>
+        </section>
+    </div>
+</center>

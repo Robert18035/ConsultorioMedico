@@ -5,24 +5,51 @@
         <li class="breadcrumb-item active" aria-current="page">Registro Paciente</li>
     </ol>
 </nav>
-<div class="form-group col-md-6 ">
-    <section class="container" ng-controller="registroPac">
-        <form id="registro" name="registroPaciente" novalidate ng-submit="registrar()">
-            <div class="input-group mb-3 flex-nowrap">
-                <div class="input-group-prepend">
-                    <span class="input-group-text fa fa-user"></span>
+<center>
+    <div class="form-group col-md-6 ">
+        <section class="container" ng-controller="registroPac">
+            <form name="registroPaciente" method="POST" ng-submit="registrar()" novalidate>
+                <!-- NOMBRE -->
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-user"></span>
+                    </div>
+                    <input type="text" name="nombre" ng-model="paciente.nombre" class="form-control" placeholder="Nombre" title="Introduce tu nombre" ng-required="true">
+                    <div ng-show="registroPaciente.nombre.$touched && registroPaciente.nombre.$invalid">
+                        <small class="text-sm-center">&emsp; Ingresa un nombre válido.</small>
+                    </div>
                 </div>
-                <input type="text" name="nombre" ng-model="paciente.nombre" class="form-control" placeholder="Nombre" required>
-            </div>
-            <div class="input-group mb-3 flex-nowrap">
-                <div class="input-group-prepend">
-                    <span class="input-group-text fa fa-at"></span>
+                <!-- FECHA DE NACIMIENTO -->
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-calendar"></span>
+                    </div>
+                    <input type="date" name="fechaNac" ng-model="paciente.fecha" class="form-control" placeholder="FechaNacimiento" ng-required="true">
                 </div>
-                <input type="email" name="email" ng-model="paciente.email" class="form-control" placeholder="Email" required><br>
-            </div>
-            <center>
-                <input type="submit" value="Registrar" class="btn btn-info">
-            </center>
-        </form>
-    </section>
-</div>
+                <!-- CORREO -->
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-at"></span>
+                    </div>
+                    <input type="email" name="email" ng-model="paciente.email" class="form-control" placeholder="Email" title="Introduce tu correo"><br>
+                    <div ng-show="registroPaciente.email.$touched && registroPaciente.email.$invalid">
+                        <small class="text-sm-center">&emsp; Ingresa un correo válido.</small>
+                    </div>
+                </div>
+                <!-- SEXO -->
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-venus-mars"></span>
+                    </div>
+                    <select name="sexo" ng-model="paciente.gender" ng-options="paciente.label as paciente.value for paciente in paciente.sexo" class="form-control" ng-required="true">
+                        <option value="">Sexo</option>
+                    </select>
+                </div>
+                <!-- Nombre, Fecha Nacimiento (Validar esto como AAAA/MM/DD), Sexo, Correo -->
+                <center>
+                    <input type="submit" value="Registrar" class="btn btn-info" ng-disabled="registroPaciente.$invalid">
+                </center>
+            </form>
+        </section>
+    </div>
+</center>

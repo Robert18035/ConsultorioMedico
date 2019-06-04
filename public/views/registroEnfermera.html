@@ -1,0 +1,39 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#/">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="#!registro">Registro</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Registro Enfermera</li>
+    </ol>
+</nav>
+<!-- Correo, Contraseña -->
+<center>
+    <div class="form-group col-md-6 ">
+        <section class="container" ng-controller="registroMed">
+            <form name="registroEnfermera" method="POST" ng-submit="registrarEnf()" novalidate>
+                <!-- NOMBRE -->
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-user"></span>
+                    </div>
+                    <input type="text" name="nombreEnf" ng-model="enfermera.nombre" class="form-control" placeholder="Nombre" title="Introduce tu nombre" ng-required="true">
+                    <div ng-show="registroEnfermera.nombreEnf.$touched && registroEnfermera.nombreEnf.$invalid">
+                        <small class="text-sm-center">&emsp; Ingresa un nombre válido.</small>
+                    </div>
+                </div>
+                <!-- CORREO -->
+                <div class="input-group mb-3 flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text fa fa-at"></span>
+                    </div>
+                    <input type="email" name="emailEnf" ng-model="enfermera.email" class="form-control" placeholder="Email" title="Introduce tu correo"><br>
+                    <div ng-show="registroEnfermera.emailEnf.$touched && registroEnfermera.emailEnf.$invalid">
+                        <small class="text-sm-center">&emsp; Ingresa un correo válido.</small>
+                    </div>
+                </div>
+                <center>
+                    <input type="submit" value="Registrar" class="btn btn-info" ng-disabled="registroEnfermera.$invalid">
+                </center>
+            </form>
+        </section>
+    </div>
+</center>

@@ -1,33 +1,69 @@
-//const dbConnection = require('dbConexion');
+const pool = require('./dbConexion');
+const randomstring = require('randomstring');
+const mailer = require('./mailer');
+
 
 module.exports = app => {
 
-    //const connection = dbConnection();
+    //*********************GET*********************************
+
 
     app.get('/', (req, res) => {
-        res.sendfile('/public/index.html');
+        res.render('index.html');
     });
 
-    //**************** */ejemplo base de datos*************************
+    app.get('/verificar', (req, res) => {
+        res.render('views/verificar.html');
+    });
 
-    /*app.get('/news', (req, res) => {
-      connection.query('SELECT * FROM news', (err, result) => {
-        res.render('news/news', {
-          news: result
+
+    //******************** POST *******************************
+
+    app.post('/registroMed', async(req, res) => {
+        console.log("entro al metodo post registro medico");
+        const { nombre, correo, contra } = req.body;
+        const validado = false;
+        const activo = false;
+        const token = randomstring.generate();
+
+        await pool.query('INSERT INTO medicos SET ? ', {
+            correo,
+            contra,
+            nombre,
+            activo,
+            validado,
+            token
         });
-      });
+        res.status(200).send({
+            message: "Registro realizado, favor de verificar su correo"
+        });
+
+        //envio del correo
+        const html = 'Hola medico <br> gracias por registrarte <br> te invitamos a verificar tu cuenta <br> ingresando el siguiente codigo: <b>' + token + '</b><br>en la siguiente página: <a href="http://localhost:3000/verificar">http://localhost:3000/verificar</a>';
+        await mailer.sendEmail('consultorioMedico@edu.uaa.mx', correo, 'Verificacion Medico', html);
+        console.log("termino post registro medicos");
     });
 
-    app.post('/news', (req, res) => {
-      const { title, news } = req.body;
-      connection.query('INSERT INTO news SET ? ',
-        {
-          title,
-          news
+    app.post('/infoToken', async(req, res) => {
+
+        var secretToken = req.body.token;
+        var usuario = await pool.query('SELECT * FROM medicos WHERE token =?', secretToken);
+
+        if (!usuario[0]) {
+            console.log("token no valido");
+            res.status(400).send({
+                message: "Token no valido, favor de verificar"
+            });
+            return;
         }
-      , (err, result) => {
-        res.redirect('news/news');
-      });
-    });*/
+        console.log("token valido")
+        await pool.query('Update medicos SET validado = 1 WHERE token =?', secretToken);
+
+        res.status(200).send({
+            message: "Verificacion realizada, ahora podrá ingresar a su cuenta"
+        });
+
+
+    });
 
 };

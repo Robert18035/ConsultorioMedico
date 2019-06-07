@@ -2,13 +2,13 @@
 <html lang="es">
 
 <head>
-    <title>Citas Médicas</title>
+    <title>Consultorio Médico | Diagnósticos Online </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,700italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/estilos.css">
@@ -17,22 +17,23 @@
 </head>
 
 <body ng-app="myApp" id="encabezado">
-    <nav class="encabezado navbar sticky-top" role="banner">
+    <nav class="encabezado navbar navbar-expand-lg sticky-top" role="banner">
         <div class="container">
             <a href="#!/" class="logo">
                 <img src="images/logo-consultorio-medico.png" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            <nav id="menu-principal" class="collapse">
-                <ul>
-                    <li><a href="#!/">Inicio</a></li>
-                    <li><a href="#!about">Acerca De...</a></li>
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu-principal">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#!/">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!about">Acerca De...</a></li>
                 </ul>
-            </nav>
+            </div>
         </div>
     </nav>
+    <!-- ROUTING -->
     <div id="main">
         <div ng-view></div>
     </div>
@@ -42,7 +43,7 @@
             <ul class="redes-sociales">
                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true" id="face"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true" id="tweet"></i></a></li>
-                <li><a href="#"><i class="fa fa-youtube" aria-hidden="true" id="youtube"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true" id="instagram"></i></a></li>
             </ul>
         </div>
     </footer>

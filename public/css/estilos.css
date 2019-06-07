@@ -192,6 +192,62 @@ ul li {
 }
 
 
+/*-----------------------------
+    SECCION LOGIN Y REGISTROS
+------------------------------*/
+
+.registros {
+    background: url("../images/fondo-login.jpg") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed !important;
+    color: #fff;
+}
+
+.registros article {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.registros img {
+    flex: 0 0 160px;
+    overflow: hidden;
+    margin-right: 1rem;
+}
+
+.registros h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    flex: 1 1 auto;
+}
+
+.registros h3 a {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+
+.registros h3 a::after {
+    content: "\f054";
+    font-family: FontAwesome;
+    font-size: 2rem;
+    margin-left: 1rem;
+    opacity: .5;
+    position: relative;
+    left: 0;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.registros h3 a:hover::after {
+    left: -.5rem;
+    opacity: 1;
+    color: #12AFAF;
+}
+
+
 /*---------------------------
     FORMULARIOS DE REGISTRO
 -----------------------------*/
@@ -246,9 +302,9 @@ input[disabled="disabled"] {
     transition: all .5s ease-in-out;
 }
 
-.piedepagina .redes-sociales a:hover #youtube {
+.piedepagina .redes-sociales a:hover #instagram {
     opacity: 1;
-    color: rgb(226, 8, 8);
+    color: rgb(240, 120, 210);
     transition: all .5s ease-in-out;
 }
 
@@ -342,6 +398,42 @@ input[disabled="disabled"] {
     .servicios .btn-secondary {
         margin-top: auto;
     }
+    /* Para la sección de registros es igual, sólo cambian unas cosas */
+    .registros article {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .registros img {
+        flex: 0 0 160px;
+        overflow: hidden;
+        margin-right: 0;
+        margin-bottom: 1rem;
+        transition: all 1s ease;
+    }
+    .registros article:hover img {
+        transform: rotateY(360deg);
+        transform-style: preserve-3d;
+    }
+    .registros h3 a::after {
+        content: "";
+    }
+    .registros h3 {
+        margin: 0 0 .5rem 0;
+        font-size: 1.5rem;
+        flex: 0 1 auto;
+        width: 100%;
+    }
+    .registros h3 a {
+        display: block;
+        width: 100%;
+    }
+    .registros p {
+        width: 100%;
+    }
+    .servicios .btn-secondary {
+        margin-top: auto;
+    }
     @media (min-width: 992px) {
         html {
             font-size: 16px;
@@ -352,6 +444,10 @@ input[disabled="disabled"] {
         }
         .servicios {
             background: url("../images/fondo-servicios-grande.jpg") no-repeat center center;
+            background-size: cover;
+        }
+        .registros {
+            background: url("../images/fondo-login-grande.jpg") no-repeat center center;
             background-size: cover;
         }
     }

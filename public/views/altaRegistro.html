@@ -50,11 +50,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text fa fa-home"></span>
                     </div>
-                    <select name="nivel-socioeconomico" ng-model="paciente.nivelEcon" ng-options="paciente.label as paciente.value for paciente in paciente.nivelEcon" class="form-control" ng-required="true">
+                    <select name="nivel-socioeconomico" ng-model="paciente.nivelEcono" ng-options="paciente.label as paciente.value for paciente in paciente.nivelEcon" class="form-control" ng-required="true">
                         <option value="">Nivel Socio-económico</option>
                     </select>
                 </div>
-                <!-- Nombre, Fecha Nacimiento (Validar esto como AAAA/MM/DD), Sexo, Correo -->
                 <center>
                     <input type="submit" value="Registrar" class="btn btn-info" ng-disabled="registroPaciente.$invalid">
                 </center>

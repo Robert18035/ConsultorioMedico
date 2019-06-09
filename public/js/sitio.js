@@ -15,8 +15,8 @@ smoothScroll.init({
 /*---------------------------------
     OCULTAR Y MOSTRAR BOTON IR ARRIBA
  ----------------------------------*/
-$(function () {
-    $(window).scroll(function () {
+$(function() {
+    $(window).scroll(function() {
         var scrolltop = $(this).scrollTop();
         if (scrolltop >= 50) {
             $(".ir-arriba").fadeIn();
@@ -30,7 +30,7 @@ $(function () {
 /*---------------------------------
    CABECERA ANIMADA
  ----------------------------------*/
-$(window).scroll(function () {
+$(window).scroll(function() {
 
     var nav = $('.encabezado');
     var scroll = $(window).scrollTop();

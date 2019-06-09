@@ -1,0 +1,47 @@
+/*------------------------------
+    BARRA DE NAVEGACIÓN LATERAL
+--------------------------------*/
+
+ul#navigation {
+    position: fixed;
+    margin: 0px;
+    padding: 0px;
+    top: 50px;
+    left: 0px;
+    list-style: none;
+    z-index: 9999;
+}
+
+ul#navigation li {
+    width: 100px;
+}
+
+ul#navigation li a {
+    display: block;
+    margin-left: -81px;
+    width: 100px;
+    height: 70px;
+    background-color: #CFCFCF;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid #AFAFAF;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-radius: 0px 10px 10px 0px;
+    opacity: 0.6;
+    box-shadow: 0px 4px 3px #000;
+    transition: .3s ease-in;
+    color: #000;
+}
+
+ul#navigation li a:hover {
+    margin-left: -2px;
+    transition: .3s ease-out;
+}
+
+hr {
+    border: 1.5px solid rgb(22, 184, 221);
+}
+
+
+/* Agregar medias queries por si se usa en celular (agregar al final) */

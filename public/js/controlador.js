@@ -12,7 +12,7 @@ app.config(function($routeProvider) {
         .when("/registro", {
             templateUrl: "../views/registro.html"
         })
-        /* ----------------------------------------------------------- */
+        /* -----------------------AUTO REGISTRO DE PACIENTES------------------------------------ */
         .when("/altaRegistro", {
             templateUrl: "../views/altaRegistro.html",
             controller: "registroPac"
@@ -21,7 +21,7 @@ app.config(function($routeProvider) {
             templateUrl: "../views/principal.html",
             controller: "registroPac"
         })
-        /* ----------------------------------------------------------- */
+        /* ------------------------REGISTRO DE MÉDICOS----------------------------------- */
         .when("/medico", {
             templateUrl: "../views/medico.html",
             controller: "inicioMed"
@@ -34,7 +34,7 @@ app.config(function($routeProvider) {
             templateUrl: "../views/principal.html",
             controller: "registroMed"
         })
-        /* ----------------------------------------------------------- */
+        /* -------------------------REGISTRO DE ENFERMERAS---------------------------------- */
         .when("/enfermera", {
             templateUrl: "../views/enfermera.html"
         })
@@ -46,6 +46,25 @@ app.config(function($routeProvider) {
             templateUrl: "../views/principal.html",
             controller: "registroEnf"
         })
+        /* -------------------------PÁGINAS DEL MÉDICO---------------------------------- */
+        .when("/indexMed", {
+            templateUrl: "../views/logins/medico/medico.html",
+            controller: "indexMedico"
+        })
+        .when("/consulta", {
+            templateUrl: "../views/logins/medico/videochat.html"
+        })
+        .when("/misCons", {
+            templateUrl: "../views/logins/medico/consultas.html"
+        })
+        // Este controlador supongo que debe de llevar a un controlador de cerrar sesión (?) 
+        // De mientras lo voy a dejar comentado, si lo dejo activo se traba la página (idk) 
+        /*.when("/logOut", {
+            templateUrl: "../index.html"
+        })*/
+        /* -------------------------PÁGINAS DE LA ENFERMERA---------------------------------- */
+        /* -------------------------PÁGINAS DEL ADMINISTRADOR---------------------------------- */
+        /* -------------------------ERROR---------------------------------- */
         .otherwise({
             templateUrl: "../views/error.html"
         });
@@ -147,6 +166,11 @@ app.controller('inicioMed', ['$scope', '$location', function($scope, $location) 
 
 
 }]);
+//--------------------------------P+AGINAS DEL MÉDICO------------------------------
+
+app.controller('indexMedico', function() {
+    document.getElementById('cabecera').style.display = "none";
+});
 
 //------------------------------------Verificacion cuenta-------------------------------------
 

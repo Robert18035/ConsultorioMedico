@@ -34,9 +34,34 @@ app.config(function($routeProvider) {
             templateUrl: "../views/principal.html",
             controller: "registroMed"
         })
-        /* -------------------------REGISTRO DE ENFERMERAS---------------------------------- */
+        /* -------------------------ENFERMERAS---------------------------------- */
         .when("/enfermera", {
             templateUrl: "../views/enfermera.html"
+        })
+
+    /* -------------------------PÁGINAS DEL MÉDICO---------------------------------- */
+    .when("/indexMed", {
+            templateUrl: "../views/logins/medico/medico.html",
+            controller: "indexMedico"
+        })
+        .when("/consulta", {
+            templateUrl: "../views/logins/medico/videochat.html",
+            controller: "sala"
+        })
+        .when("/misCons", {
+            templateUrl: "../views/logins/medico/consultas.html",
+            controller: "misConsultas"
+        })
+        // Este controlador supongo que debe de llevar a un controlador de cerrar sesión (?) 
+        // De mientras lo voy a dejar comentado, si lo dejo activo se traba la página (idk) 
+        /*.when("/logOut", {
+            templateUrl: "../index.html"
+        })*/
+        /* -------------------------PÁGINAS DE LA ENFERMERA---------------------------------- */
+        /* -------------------------PÁGINAS DEL ADMINISTRADOR---------------------------------- */
+        .when("/admin", {
+            templateUrl: "../views/logins/admin/admin.html",
+            controller: "indexAdmin"
         })
         .when("/regisEnfermera", {
             templateUrl: "../views/registroEnfermera.html",
@@ -46,24 +71,6 @@ app.config(function($routeProvider) {
             templateUrl: "../views/principal.html",
             controller: "registroEnf"
         })
-        /* -------------------------PÁGINAS DEL MÉDICO---------------------------------- */
-        .when("/indexMed", {
-            templateUrl: "../views/logins/medico/medico.html",
-            controller: "indexMedico"
-        })
-        .when("/consulta", {
-            templateUrl: "../views/logins/medico/videochat.html"
-        })
-        .when("/misCons", {
-            templateUrl: "../views/logins/medico/consultas.html"
-        })
-        // Este controlador supongo que debe de llevar a un controlador de cerrar sesión (?) 
-        // De mientras lo voy a dejar comentado, si lo dejo activo se traba la página (idk) 
-        /*.when("/logOut", {
-            templateUrl: "../index.html"
-        })*/
-        /* -------------------------PÁGINAS DE LA ENFERMERA---------------------------------- */
-        /* -------------------------PÁGINAS DEL ADMINISTRADOR---------------------------------- */
         /* -------------------------ERROR---------------------------------- */
         .otherwise({
             templateUrl: "../views/error.html"
@@ -87,7 +94,6 @@ app.controller('registroPac', ['$scope', '$location', function($scope, $location
         { value: "Medio", label: "Medio" },
         { value: "Alto", label: "Alto" }
     ]
-
     $scope.registrar = function() {
         $location.path('/altaRegistro-success');
 
@@ -153,9 +159,6 @@ app.controller('registroMed', ['$scope', '$location', '$http', function($scope, 
                 }
             );
     };
-
-
-
 }]);
 
 /*--------------------------------- INICIO SESION MEDICO-------------------------------------*/
@@ -163,12 +166,28 @@ app.controller('registroMed', ['$scope', '$location', '$http', function($scope, 
 app.controller('inicioMed', ['$scope', '$location', function($scope, $location) {
     console.log("Inicio controlador inicio medico");
     $scope.medico = [];
-
-
 }]);
-//--------------------------------P+AGINAS DEL MÉDICO------------------------------
+//--------------------------------PÁGINAS DEL MÉDICO------------------------------
 
 app.controller('indexMedico', function() {
+    document.getElementById('cabecera').style.display = "none";
+});
+
+app.controller('sala', function() {
+    document.getElementById('cabecera').style.display = "none";
+});
+
+app.controller('misConsultas', function() {
+    document.getElementById('cabecera').style.display = "none";
+    let consultas = true;
+    if (!consultas) {
+        alert("Sin consultas. Ponte a trabajar xd");
+    }
+});
+
+//--------------------------------PÁGINAS DEL ADMINISTRADOR------------------------------
+
+app.controller('indexAdmin', function() {
     document.getElementById('cabecera').style.display = "none";
 });
 
@@ -184,9 +203,6 @@ app.controller('verificacion', ['$scope', '$location', '$http', function($scope,
 
         );
         console.log(data);
-
-
-
         $http({
             url: '/infoToken',
             method: 'POST',
@@ -194,7 +210,6 @@ app.controller('verificacion', ['$scope', '$location', '$http', function($scope,
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
             },
             data: data
-
         }).then(function success(response) {
             alert(response.data.message);
             //redirigir a la pagina principal
@@ -204,13 +219,11 @@ app.controller('verificacion', ['$scope', '$location', '$http', function($scope,
             alert(response.data.message);
         });
     };
-
 }]);
-
-
 
 /* ------------------------------ FORMULARIO REGISTRO ENFERMERA -----------------------------*/
 app.controller('registroEnf', ['$scope', '$location', function($scope, $location) {
+    document.getElementById('cabecera').style.display = "none";
     $scope.enfermera = [];
     $scope.registrarEnf = function() {
         $location.path('/enfermera-success');

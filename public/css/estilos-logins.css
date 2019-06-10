@@ -1,6 +1,6 @@
-/*------------------------------
-    BARRA DE NAVEGACIÓN LATERAL
---------------------------------*/
+/*---------------------------------------------
+    BARRA DE NAVEGACIÓN LATERAL PARA EL MÉDICO
+-----------------------------------------------*/
 
 ul#navigation {
     position: fixed;
@@ -45,3 +45,83 @@ hr {
 
 
 /* Agregar medias queries por si se usa en celular (agregar al final) */
+
+
+/*---------------------------------------------
+    BARRA DE NAVEGACIÓN DEL ADMINISTRACIÓN
+-----------------------------------------------*/
+
+.admin {
+    background: #949494;
+    color: #000;
+    padding: .5rem 0;
+    transition: all .5s ease;
+}
+
+.admin.fondo-menu {
+    background: #dddddd;
+    padding: 1rem 0;
+}
+
+.admin .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.admin .logo img {
+    width: 300px;
+    height: auto;
+}
+
+#menu-admin {
+    flex: 1 1 100%;
+}
+
+#menu-admin ul {
+    padding: 0;
+    list-style: none;
+    margin: 1rem 0 0 0;
+}
+
+#menu-admin ul a {
+    display: block;
+    padding: .8rem 0;
+    text-align: center;
+    color: #000;
+    text-transform: uppercase;
+    border-top: 1px solid #8c8888;
+    text-decoration: none;
+}
+
+#menu-admin ul a:hover,
+#menu-admin ul li.active a {
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    #menu-admin {
+        height: auto !important;
+        display: block;
+        flex: 0 1 auto;
+        margin-left: auto;
+        order: 1;
+    }
+    #menu-admin ul {
+        display: flex;
+        margin: 0;
+    }
+    #menu-admin ul li a {
+        padding: .8rem;
+        text-transform: capitalize;
+        margin: 0 .3rem;
+        border-top: 0px;
+        border-bottom: 4px solid transparent;
+        transition: all .5s ease;
+    }
+    #menu-admin ul li:active a,
+    #menu-admin ul li a:hover {
+        color: #ffffff;
+        border-bottom: 4px solid;
+    }
+}

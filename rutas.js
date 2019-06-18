@@ -62,8 +62,22 @@ module.exports = app => {
         res.status(200).send({
             message: "Verificacion realizada, ahora podrá ingresar a su cuenta"
         });
+    });
+    /* LOGIN DEL MEDICO */
+    app.post('/login', async(req, res) => {
+        var correo = req.body.correo;
+        var pass = req.body.pass;
 
+        const resultado = await pool.query('SELECT * FROM medicos WHERE correo = ? AND contra = ?', [correo, pass]);
 
+        console.log('ResultadoÑ ' + JSON.stringify(resultado));
+
+        if (resultado === null) {
+            res.status(401).json({ message: "Datos invalidos" });
+        } else {
+            res.status(200).send(resultado);
+
+        }
     });
 
 };

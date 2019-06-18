@@ -9,18 +9,18 @@
     <div class="form-group col-md-6 ">
         <section class="container" ng-controller="inicioMed">
             <h1>Iniciar Sesión</h1>
-            <form>
+            <form ng-submit="login()">
                 <div class="input-group mb-3 flex-nowrap">
                     <div class="input-group-prepend">
                         <span class="input-group-text fa fa-envelope"></span>
                     </div>
-                    <input type="email" class="form-control" placeholder="Correo" title="Introduce tu correo">
+                    <input type="email" class="form-control" placeholder="Correo" title="Introduce tu correo" ng-model="medico.correo">
                 </div>
                 <div class="input-group mb-3 flex-nowrap">
                     <div class="input-group-prepend">
                         <span class="input-group-text fa fa-key"></span>
                     </div>
-                    <input type="password" class="form-control" placeholder="Contraseña" title="Introduce tu contraseña"><br>
+                    <input type="password" class="form-control" placeholder="Contraseña" title="Introduce tu contraseña" ng-model="medico.pass"><br>
                 </div>
                 <center>
                     <input type="submit" value="Iniciar Sesión" class="btn btn-info">
@@ -28,7 +28,7 @@
             </form>
             <br>
             <h5>¿No estás registrado?</h5>
-            <a href="#!regisMedico" class="btn btn-primary hidden-sm-down">Registrarse</a>
+            <a href="#!regisMedico" class="btn btn-info hidden-sm-down">Registrarse</a>
         </section>
     </div>
 </center>

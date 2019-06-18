@@ -85,6 +85,27 @@ app.controller('homeController', function($scope) {
     $scope.message = 'Realiza tu consulta online con nosotros';
 });
 
+// SERVICIO DE AUTOIDENTIFICACIÓN
+
+app.service('credenciales', function() {
+    var credenciales;
+
+    var setCredenciales = function(obj) {
+        credenciales = obj[0];
+        console.log('Credenciales: ' + JSON.stringify(credenciales));
+    }
+
+    var getCredenciales = function() {
+        return credenciales;
+    }
+
+    return {
+        setCredenciales: setCredenciales,
+        getCredenciales: getCredenciales
+    };
+
+});
+
 /* -------------------------------- FORMULARIO ALTA REGISTRO PACIENTE -------------------------------*/
 
 app.controller('registroPac', ['$scope', '$location', function($scope, $location) {
@@ -167,14 +188,36 @@ app.controller('registroMed', ['$scope', '$location', '$http', function($scope, 
 
 /*--------------------------------- INICIO SESION MEDICO-------------------------------------*/
 
-app.controller('inicioMed', ['$scope', '$location', function($scope, $location) {
+app.controller('inicioMed', ['$scope', '$http', '$location', 'credenciales', function($scope, $http, $location, credenciales) {
     console.log("Inicio controlador inicio medico");
     $scope.medico = [];
+    $scope.login = function() {
+        let correo = $scope.medico.correo;
+        let pass = $scope.medico.pass;
+
+        let data = {
+            correo: correo,
+            pass: pass
+        };
+
+        $http.post('/login', data)
+            .then(function(response) {
+                //alert(JSON.stringify(response.data));
+                credenciales.setCredenciales(response.data);
+                console.log('Credenciales:' + JSON.stringify(credenciales.getCredenciales()));
+                $location.path("/indexMed");
+            }, function(response) {
+                alert(JSON.stringify(response.data));
+
+            });
+    }
 }]);
 //--------------------------------PÁGINAS DEL MÉDICO------------------------------
 
-app.controller('indexMedico', function() {
+app.controller('indexMedico', function($scope, credenciales) {
     document.getElementById('cabecera').style.display = "none";
+    $scope.medico = credenciales.getCredenciales().nombre;
+    console.log('Nombre: ' + credenciales.getCredenciales().nombre);
 });
 
 app.controller('sala', function() {
@@ -193,8 +236,8 @@ app.controller('misConsultas', function() {
 
 app.controller('indexAdmin', function() {
     document.getElementById('cabecera').style.display = "none";
+
 });
-/*
 app.controller('stds', function() {
     document.getElementById('cabecera').style.display = "none";
     var ctx = document.getElementById('chart');
@@ -235,7 +278,6 @@ app.controller('stds', function() {
         }
     });
 });
-*/
 //------------------------------------Verificacion cuenta-------------------------------------
 
 app.controller('verificacion', ['$scope', '$location', '$http', function($scope, $location, $http) {

@@ -7,6 +7,8 @@
 </nav>
 <center>
     <div class="form-group col-md-6 ">
+        <h3>Crear expediente</h3>
+        <hr>
         <section class="container" ng-controller="registroPac">
             <form name="registroPaciente" method="POST" ng-submit="registrar()" novalidate>
                 <!-- NOMBRE -->
@@ -14,9 +16,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text fa fa-user"></span>
                     </div>
-                    <input type="text" name="nombre" ng-model="paciente.nombre" class="form-control" placeholder="Nombre" title="Introduce tu nombre" ng-required="true" >
+                    <input type="text" name="nombre" ng-model="paciente.nombre" class="form-control" placeholder="Nombre" title="Introduce tu nombre" ng-required="true">
+                    <b class="text-danger mr-2 mt-2 ml-2">*</b>
                     <div ng-show="registroPaciente.nombre.$touched && registroPaciente.nombre.$invalid">
-                        <small class="text-sm-center">&emsp; Ingresa un nombre válido.</small>
+                        <small class="text-sm-center text-danger">&emsp; Ingresa un nombre válido.</small>
                     </div>
                 </div>
                 <!-- FECHA DE NACIMIENTO -->
@@ -25,6 +28,7 @@
                         <span class="input-group-text fa fa-calendar"></span>
                     </div>
                     <input type="date" name="fechaNac" ng-model="paciente.fecha" class="form-control" placeholder="FechaNacimiento" ng-required="true">
+                    <b class="text-danger mr-2 mt-2 ml-2">*</b>
                 </div>
                 <!-- CORREO -->
                 <div class="input-group mb-3 flex-nowrap">
@@ -32,6 +36,7 @@
                         <span class="input-group-text fa fa-at"></span>
                     </div>
                     <input type="email" name="email" ng-model="paciente.email" class="form-control" placeholder="Email" title="Introduce tu correo"><br>
+                    <b class="text-danger mr-2 mt-2 ml-2">*</b>
                     <div ng-show="registroPaciente.email.$touched && registroPaciente.email.$invalid">
                         <small class="text-sm-center">&emsp; Ingresa un correo válido.</small>
                     </div>
@@ -44,6 +49,7 @@
                     <select name="sexo" ng-model="paciente.gender" ng-options="paciente.label as paciente.value for paciente in paciente.sexo" class="form-control" ng-required="true">
                         <option value="">Sexo</option>
                     </select>
+                    <b class="text-danger mr-2 mt-2 ml-2">*</b>
                 </div>
                 <!-- NIVEL SOCIOECONOMICO -->
                 <div class="input-group mb-3 flex-nowrap">
@@ -53,6 +59,7 @@
                     <select name="nivel-socioeconomico" ng-model="paciente.nivelEcono" ng-options="paciente.label as paciente.value for paciente in paciente.nivelEcon" class="form-control" ng-required="true">
                         <option value="">Nivel Socio-económico</option>
                     </select>
+                    <b class="text-danger mr-2 mt-2 ml-2">*</b>
                 </div>
                 <center>
                     <input type="submit" value="Registrar" class="btn btn-info" ng-disabled="registroPaciente.$invalid">

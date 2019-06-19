@@ -153,7 +153,6 @@ app.controller('registroMed', ['$scope', '$location', '$http', function($scope, 
     $scope.medico = [];
     var pass1 = $scope.medico.contra;
     var pass2 = $scope.medico.contra2;
-    /* Falta implementar bien esto */
     if (pass1 != pass2) {
         alert("Contraseñas no coinciden");
     } else {
@@ -202,9 +201,8 @@ app.controller('inicioMed', ['$scope', '$http', '$location', 'credenciales', fun
 
         $http.post('/login', data)
             .then(function(response) {
-                //alert(JSON.stringify(response.data));
                 credenciales.setCredenciales(response.data);
-                console.log('Credenciales:' + JSON.stringify(credenciales.getCredenciales()));
+                //console.log('Credenciales:' + JSON.stringify(credenciales.getCredenciales()));
                 $location.path("/indexMed");
             }, function(response) {
                 alert(JSON.stringify(response.data));
@@ -217,7 +215,6 @@ app.controller('inicioMed', ['$scope', '$http', '$location', 'credenciales', fun
 app.controller('indexMedico', function($scope, credenciales) {
     document.getElementById('cabecera').style.display = "none";
     $scope.medico = credenciales.getCredenciales().nombre;
-    console.log('Nombre: ' + credenciales.getCredenciales().nombre);
 });
 
 app.controller('sala', function() {

@@ -79,7 +79,7 @@ module.exports = app => {
 
         const resultado = await pool.query('SELECT * FROM medicos WHERE correo = ? AND contra = ?', [correo, pass]);
 
-        console.log('Resultado: ' + JSON.stringify(resultado));
+        //console.log('Resultado: ' + JSON.stringify(resultado));
 
         if (!resultado[0]) {
             res.status(401).json({ message: "Datos invalidos" });

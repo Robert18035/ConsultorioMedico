@@ -9,6 +9,8 @@
 <!-- Correo, Nombre, Contraseña-->
 <center>
     <div class="form-group col-md-6 ">
+        <h1>Crear cuenta</h1>
+        <hr>
         <section class="container" ng-controller="registroMed">
             <form name="registroMedico" method="POST" ng-submit="registrarMed()" novalidate>
                 <!-- NOMBRE -->
@@ -18,7 +20,7 @@
                     </div>
                     <input type="text" name="nombreMed" ng-model="medico.nombre" class="form-control" placeholder="Nombre" title="Introduce tu nombre" ng-required="true">
                     <div ng-show="registroMedico.nombreMed.$touched && registroMedico.nombreMed.$invalid">
-                        <small class="text-sm-center">&emsp; Ingresa un nombre válido.</small>
+                        <small class="text-sm-center text-danger">&emsp; Ingresa un nombre válido.</small>
                     </div>
                 </div>
                 <!-- CORREO -->

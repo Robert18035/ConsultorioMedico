@@ -39,7 +39,7 @@ module.exports = app => {
         });
 
         //envio del correo
-        const html = 'Hola medico <br> gracias por registrarte <br> te invitamos a verificar tu cuenta <br> ingresando el siguiente codigo: <b>' + token + '</b><br>en la siguiente página: <a href="http://localhost:3000/verificar">http://localhost:3000/verificar</a>';
+        const html = 'Hola medico <br> gracias por registrarte <br> Te invitamos a verificar tu cuenta <br> Ingresa el siguiente codigo: <b>' + token + '</b><br>en la siguiente página: <a href="http://localhost:3000/verificar">http://localhost:3000/verificar</a>';
         await mailer.sendEmail('consultorioMedico@edu.uaa.mx', correo, 'Verificacion Medico', html);
         console.log("termino post registro medicos");
     });
@@ -70,13 +70,12 @@ module.exports = app => {
 
         const resultado = await pool.query('SELECT * FROM medicos WHERE correo = ? AND contra = ?', [correo, pass]);
 
-        console.log('ResultadoÑ ' + JSON.stringify(resultado));
+        console.log('Resultado: ' + JSON.stringify(resultado));
 
-        if (resultado === null) {
+        if (!resultado[0]) {
             res.status(401).json({ message: "Datos invalidos" });
         } else {
             res.status(200).send(resultado);
-
         }
     });
 

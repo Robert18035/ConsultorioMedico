@@ -151,8 +151,8 @@ app.controller('registroPac', ['$scope', '$location', function($scope, $location
 app.controller('registroMed', ['$scope', '$location', '$http', function($scope, $location, $http) {
     console.log("Inicio controlador registro medico");
     $scope.medico = [];
-    var pass1 = $scope.medico.pass;
-    var pass2 = $scope.medico.pass2;
+    var pass1 = $scope.medico.contra;
+    var pass2 = $scope.medico.contra2;
     /* Falta implementar bien esto */
     if (pass1 != pass2) {
         alert("Contraseñas no coinciden");

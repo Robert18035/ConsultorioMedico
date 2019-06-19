@@ -25,23 +25,32 @@ module.exports = app => {
         const validado = false;
         const activo = false;
         const token = randomstring.generate();
+        var ingreso = await pool.query('SELECT * FROM medicos where correo = ?', correo);
+        //---------Verificar si el correo no se repite en la base de datos
 
-        await pool.query('INSERT INTO medicos SET ? ', {
-            correo,
-            contra,
-            nombre,
-            activo,
-            validado,
-            token
-        });
-        res.status(200).send({
-            message: "Registro realizado, favor de verificar su correo"
-        });
+        if (ingreso[0]) {
+            res.status(401).send({
+                message: "Registro invalido, correo ocupado, intente de nuevo"
+            });
+        } else {
+            await pool.query('INSERT INTO medicos SET ? ', {
+                correo,
+                contra,
+                nombre,
+                activo,
+                validado,
+                token
+            });
+            res.status(200).send({
+                message: "Registro realizado, favor de verificar su correo"
+            });
 
-        //envio del correo
-        const html = 'Hola medico <br> gracias por registrarte <br> Te invitamos a verificar tu cuenta <br> Ingresa el siguiente codigo: <b>' + token + '</b><br>en la siguiente página: <a href="http://localhost:3000/verificar">http://localhost:3000/verificar</a>';
-        await mailer.sendEmail('consultorioMedico@edu.uaa.mx', correo, 'Verificacion Medico', html);
-        console.log("termino post registro medicos");
+            //envio del correo
+            const html = 'Hola medico <br> gracias por registrarte <br> Te invitamos a verificar tu cuenta <br> Ingresa el siguiente codigo: <b>' + token + '</b><br>en la siguiente página: <a href="http://localhost:3000/verificar">http://localhost:3000/verificar</a>';
+            await mailer.sendEmail('consultorioMedico@edu.uaa.mx', correo, 'Verificacion Medico', html);
+            console.log("termino post registro medicos");
+        }
+
     });
 
     app.post('/infoToken', async(req, res) => {

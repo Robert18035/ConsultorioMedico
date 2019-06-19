@@ -78,14 +78,17 @@ module.exports = app => {
         var pass = req.body.pass;
 
         const resultado = await pool.query('SELECT * FROM medicos WHERE correo = ? AND contra = ?', [correo, pass]);
-
-        console.log('Resultado: ' + JSON.stringify(resultado));
-
         if (!resultado[0]) {
             res.status(401).json({ message: "Datos invalidos" });
+        } else if (resultado[0].validado != 1) {
+            res.status(402).json({ message: "Cuenta no validada, revise su correo" });
         } else {
             res.status(200).send(resultado);
         }
+    });
+
+    app.post('/regisPaciente', async(req, res) => {
+        console.log(req.body);
     });
 
 };

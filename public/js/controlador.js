@@ -92,7 +92,7 @@ app.service('credenciales', function() {
 
     var setCredenciales = function(obj) {
         credenciales = obj[0];
-        console.log('Credenciales: ' + JSON.stringify(credenciales));
+        //console.log('Credenciales: ' + JSON.stringify(credenciales));
     }
 
     var getCredenciales = function() {
@@ -108,7 +108,7 @@ app.service('credenciales', function() {
 
 /* -------------------------------- FORMULARIO ALTA REGISTRO PACIENTE -------------------------------*/
 
-app.controller('registroPac', ['$scope', '$location', function($scope, $location) {
+app.controller('registroPac', ['$scope', '$location', '$http', function($scope, $location, $http) {
     $scope.paciente = [];
     $scope.paciente.sexo = [
         { value: "Masculino", label: "Masculino" },
@@ -122,7 +122,7 @@ app.controller('registroPac', ['$scope', '$location', function($scope, $location
     $scope.registrar = function() {
         $location.path('/altaRegistro-success');
 
-        console.log("********entro**********");
+        //console.log("********entro**********");
         var nombre = $scope.nombre;
         var correo = $scope.correo;
         var contra = $scope.contra;
@@ -135,7 +135,7 @@ app.controller('registroPac', ['$scope', '$location', function($scope, $location
             contra: contra
         };
         console.log(data);
-        $http.post('/enviar', data)
+        $http.post('/regisPaciente', data)
             .then(function(response) {
                     alert(response.data.message);
 
@@ -149,16 +149,16 @@ app.controller('registroPac', ['$scope', '$location', function($scope, $location
 /* -------------------------------- FORMULARIO REGISTRO MÉDICO -------------------------------*/
 
 app.controller('registroMed', ['$scope', '$location', '$http', function($scope, $location, $http) {
-    console.log("Inicio controlador registro medico");
+    //console.log("Inicio controlador registro medico");
     $scope.medico = [];
     var pass1 = $scope.medico.contra;
     var pass2 = $scope.medico.contra2;
-    /* Falta implementar bien esto */
+    /*-------------Falta implementar bien esto---------------------*/
     if (pass1 != pass2) {
         alert("Contraseñas no coinciden");
     } else {
         $scope.registrarMed = function() {
-            $location.path('/medico-success');
+            $location.path('/medico');
         };
     }
 
@@ -181,6 +181,7 @@ app.controller('registroMed', ['$scope', '$location', '$http', function($scope, 
                 },
                 function(response) {
                     alert(response.data.message);
+
                 }
             );
     };
@@ -189,7 +190,7 @@ app.controller('registroMed', ['$scope', '$location', '$http', function($scope, 
 /*--------------------------------- INICIO SESION MEDICO-------------------------------------*/
 
 app.controller('inicioMed', ['$scope', '$http', '$location', 'credenciales', function($scope, $http, $location, credenciales) {
-    console.log("Inicio controlador inicio medico");
+    //console.log("Inicio controlador inicio medico");
     $scope.medico = [];
     $scope.login = function() {
         let correo = $scope.medico.correo;
@@ -204,20 +205,30 @@ app.controller('inicioMed', ['$scope', '$http', '$location', 'credenciales', fun
             .then(function(response) {
                 //alert(JSON.stringify(response.data));
                 credenciales.setCredenciales(response.data);
-                console.log('Credenciales:' + JSON.stringify(credenciales.getCredenciales()));
+                //console.log('Credenciales:' + JSON.stringify(credenciales.getCredenciales()));
+                console.log(response.data[0]);
+                sessionStorage.setItem('user', JSON.stringify(response.data[0]));
                 $location.path("/indexMed");
+                //almacenar sesion en local storage
+                //console.log(response.data);
+
             }, function(response) {
                 alert(JSON.stringify(response.data));
-
             });
     }
 }]);
 //--------------------------------PÁGINAS DEL MÉDICO------------------------------
 
-app.controller('indexMedico', function($scope, credenciales) {
-    document.getElementById('cabecera').style.display = "none";
-    $scope.medico = credenciales.getCredenciales().nombre;
-    console.log('Nombre: ' + credenciales.getCredenciales().nombre);
+app.controller('indexMedico', function($scope, $location) {
+    if (JSON.parse(sessionStorage.getItem('user'))) {
+        document.getElementById('cabecera').style.display = "none";
+        console.log(JSON.parse(sessionStorage.getItem('user')).nombre);
+        $scope.medico = JSON.parse(sessionStorage.getItem('user')).nombre;
+        //console.log('Nombre: ' + credenciales.getCredenciales().nombre);
+    } else {
+        $location.path('/');
+    }
+
 });
 
 app.controller('sala', function() {

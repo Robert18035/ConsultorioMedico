@@ -34,10 +34,6 @@ app.config(function($routeProvider) {
             templateUrl: "../views/principal.html",
             controller: "registroMed"
         })
-        /* -------------------------ENFERMERAS---------------------------------- */
-        .when("/enfermera", {
-            templateUrl: "../views/enfermera.html"
-        })
 
     /* -------------------------PÁGINAS DEL MÉDICO---------------------------------- */
     .when("/indexMed", {
@@ -70,6 +66,10 @@ app.config(function($routeProvider) {
             templateUrl: "../index.html"
         })*/
         /* -------------------------PÁGINAS DE LA ENFERMERA---------------------------------- */
+        .when("/enfermera", {
+            templateUrl: "../views/enfermera.html",
+            controller: "loginEnfermera"
+        })
         .when("/indexEnf", {
             templateUrl: "../views/logins/enfermera/enfermera.html",
             controller: "indexEnf"
@@ -216,6 +216,7 @@ app.controller('inicioMed', ['$scope', '$http', '$location', 'credenciales', fun
                 //console.log('Credenciales:' + JSON.stringify(credenciales.getCredenciales()));
                 console.log(response.data[0]);
                 sessionStorage.setItem('user', JSON.stringify(response.data[0]));
+                sessionStorage.setItem('rol', "medico");
                 $location.path("/indexMed");
                 //almacenar sesion en local storage
                 //console.log(response.data);
@@ -337,9 +338,44 @@ app.controller('registroEnf', function($scope, $location) {
 });
 
 app.controller('indexEnf', function($scope, $location) {
-
-    document.getElementById('cabecera').style.display = "none";
+    console.log("inicio controlador index");
+    if (JSON.parse(sessionStorage.getItem('user'))) {
+        document.getElementById('cabecera').style.display = "none";
+        console.log(JSON.parse(sessionStorage.getItem('user')).nombre);
+        $scope.enfermera = JSON.parse(sessionStorage.getItem('user')).nombre;
+    } else {
+        $location.path('/');
+    }
 
 });
 
-app.controller('')
+
+app.controller('loginEnfermera', function($scope, $location, $http) {
+    console.log("inicio controlador  login");
+
+
+    $scope.ingresar = function() {
+        var correo = $scope.correo;
+        var contra = $scope.contra;
+
+        var data = {
+            correo: correo,
+            contra: contra
+        };
+        console.log(data);
+        $http.post('/loginEnfermera', data)
+            .then(function(response) {
+
+                console.log(response.data[0]);
+                sessionStorage.setItem('user', JSON.stringify(response.data[0]));
+                sessionStorage.setItem('rol', "enfermera");
+                $location.path("/indexEnf");
+                //almacenar sesion en local storage
+                //console.log(response.data);
+
+            }, function(response) {
+                alert(JSON.stringify(response.data));
+            });
+    }
+
+});

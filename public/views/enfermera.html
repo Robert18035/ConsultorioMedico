@@ -15,16 +15,16 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text fa fa-envelope"></span>
                     </div>
-                    <input type="email" class="form-control" placeholder="Correo" title="Introduce tu correo">
+                    <input type="email" class="form-control" placeholder="Correo" title="Introduce tu correo" ng-model="correo">
                 </div>
                 <div class="input-group mb-3 flex-nowrap">
                     <div class="input-group-prepend">
                         <span class="input-group-text fa fa-key"></span>
                     </div>
-                    <input type="password" class="form-control" placeholder="Contraseña" title="Introduce tu contraseña"><br>
+                    <input type="password" class="form-control" placeholder="Contraseña" title="Introduce tu contraseña" ng-model="contra"><br>
                 </div>
                 <center>
-                    <input type="submit" value="Iniciar Sesión" class="btn btn-info">
+                    <input type="submit" value="Iniciar Sesión" class="btn btn-info" ng-click=ingresar()>
                 </center>
             </form>
             <br>

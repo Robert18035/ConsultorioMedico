@@ -123,4 +123,22 @@ module.exports = app => {
 
     });
 
+    //------------------------LOGIN ENFERMERA----------------------------------
+
+
+    app.post('/loginEnfermera', async(req, res) => {
+        var correo = req.body.correo;
+        var pass = req.body.contra;
+        console.log(correo, pass);
+        const resultado = await pool.query('SELECT * FROM enfermeras WHERE correo = ? AND contra = ?', [correo, pass]);
+
+        console.log('Resultado: ' + JSON.stringify(resultado));
+
+        if (!resultado[0]) {
+            res.status(401).json({ message: "Datos invalidos" });
+        } else {
+            res.status(200).send(resultado);
+        }
+    });
+
 };

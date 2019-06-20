@@ -5,8 +5,7 @@ const mailer = require('./mailer');
 
 module.exports = app => {
 
-    //*********************GET*********************************
-
+    //*********************GET*********************************************
 
     app.get('/', (req, res) => {
         res.render('index.html');
@@ -16,8 +15,7 @@ module.exports = app => {
         res.render('views/verificar.html');
     });
 
-
-    //******************** POST *******************************
+    //******************** POST *****************************************
 
     app.post('/registroMed', async(req, res) => {
         console.log("entro al metodo post registro medico");
@@ -26,9 +24,8 @@ module.exports = app => {
         const activo = false;
         const token = randomstring.generate();
         var ingreso = await pool.query('SELECT * FROM medicos where correo = ?', correo);
-        //---------Verificar si el correo no se repite en la base de datos
 
-        if (ingreso[0]) {
+        if (ingreso[0]) { //--------------------Verificar si el correo no se repite en la base de datos------------------
             res.status(401).send({
                 message: "Registro invalido, correo ocupado, intente de nuevo"
             });
@@ -52,7 +49,7 @@ module.exports = app => {
         }
 
     });
-
+    //-------------------verificaciones del token --------------------------------
     app.post('/infoToken', async(req, res) => {
 
         var secretToken = req.body.token;
@@ -72,7 +69,9 @@ module.exports = app => {
             message: "Verificacion realizada, ahora podrá ingresar a su cuenta"
         });
     });
-    /* LOGIN DEL MEDICO */
+
+    /*-------------------------LOGIN DEL MEDICO----------------------------------- */
+
     app.post('/login', async(req, res) => {
         var correo = req.body.correo;
         var pass = req.body.pass;
@@ -87,8 +86,29 @@ module.exports = app => {
         }
     });
 
+    //----------------REGISTRO DEL PACIENTE ----------------------------
+
     app.post('/regisPaciente', async(req, res) => {
-        console.log(req.body);
+
+        const { nombre, fechaNacimiento, sexo, correo, nivelSocioEcon } = req.body;
+        var ingreso = await pool.query('SELECT * FROM pacientes where correo = ?', correo);
+        if (ingreso[0]) { //--------------------Verificar si el correo no se repite en la base de datos------------------
+            res.status(401).send({
+                message: "Registro invalido, correo ocupado, intente de nuevo"
+            });
+        } else {
+            await pool.query('INSERT INTO pacientes SET ? ', {
+                nombre,
+                fechaNacimiento,
+                sexo,
+                correo,
+                nivelSocioEcon
+            });
+            res.status(200).send({
+                message: "Registro realizado"
+            });
+        }
+
     });
 
 };

@@ -120,28 +120,32 @@ app.controller('registroPac', ['$scope', '$location', '$http', function($scope, 
         { value: "Alto", label: "Alto" }
     ]
     $scope.registrar = function() {
-        $location.path('/altaRegistro-success');
 
-        //console.log("********entro**********");
-        var nombre = $scope.nombre;
-        var correo = $scope.correo;
-        var contra = $scope.contra;
+        var nombre = $scope.paciente.nombre;
+        var fechaNacimiento = $scope.paciente.fecha;
+        var genero = $scope.paciente.gender;
+        var correo = $scope.paciente.email;
+        var nivelSocioEcono = $scope.paciente.nivelEcono;
 
         //parametrizacion
 
         var data = {
             nombre: nombre,
+            fechaNacimiento: fechaNacimiento,
+            sexo: genero,
             correo: correo,
-            contra: contra
+            nivelSocioEcon: nivelSocioEcono
         };
+
         console.log(data);
         $http.post('/regisPaciente', data)
             .then(function(response) {
                     alert(response.data.message);
-
+                    $location.path('/altaRegistro-success');
                 },
                 function(response) {
                     alert(response.data.message);
+                    $location.path('/altaRegistro');
                 }
             );
     };

@@ -221,14 +221,39 @@ app.controller('inicioMed', ['$scope', '$http', '$location', 'credenciales', fun
 }]);
 //--------------------------------PÁGINAS DEL MÉDICO------------------------------
 
-app.controller('indexMedico', function($scope, $location) {
+app.controller('indexMedico', function($scope, $location, $http) {
     if (JSON.parse(sessionStorage.getItem('user'))) {
         document.getElementById('cabecera').style.display = "none";
-        console.log(JSON.parse(sessionStorage.getItem('user')).nombre);
-        $scope.medico = JSON.parse(sessionStorage.getItem('user')).nombre;
+
+        //console.log(JSON.parse(sessionStorage.getItem('user')).nombre);
+        var user = JSON.parse(sessionStorage.getItem('user'));
+        $scope.medico = user.nombre;
+        $scope.id = user.idMed;
+        $scope.nombre = user.nombre;
+        $scope.correo = user.correo;
+        //var data = user;
+
+        /*$http({
+            method: 'GET',
+            url: 'infoMedico',
+            params: data
+        }).then(function(response) {
+
+        }, function(response) {
+            //alert(JSON.stringify(response.data));
+        });
+        /*$http.get('/infoMedico', data)
+            .then(function(response) {
+
+            }, function(response) {
+                alert(JSON.stringify(response.data));
+            });*/
+
     } else {
         $location.path('/');
     }
+
+
 
 });
 

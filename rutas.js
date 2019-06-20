@@ -15,6 +15,15 @@ module.exports = app => {
         res.render('views/verificar.html');
     });
 
+    app.get('/infoMedico', (req, res) => {
+        var user = req.query;
+        console.log(typeof(user));
+        console.log(JSON.stringify(user));
+        user = JSON.stringify(user);
+        user = JSON.parse(user);
+        console.log(user.idMed);
+    });
+
     //******************** POST *****************************************
 
     app.post('/registroMed', async(req, res) => {

@@ -153,11 +153,10 @@ app.controller('registroPac', ['$scope', '$location', '$http', function($scope, 
 /* -------------------------------- FORMULARIO REGISTRO MÉDICO -------------------------------*/
 
 app.controller('registroMed', ['$scope', '$location', '$http', function($scope, $location, $http) {
-    //console.log("Inicio controlador registro medico");
+    console.log("Inicio controlador registro medico");
     $scope.medico = [];
     var pass1 = $scope.medico.contra;
     var pass2 = $scope.medico.contra2;
-    /*-------------Falta implementar bien esto---------------------*/
     if (pass1 != pass2) {
         alert("Contraseñas no coinciden");
     } else {
@@ -207,7 +206,6 @@ app.controller('inicioMed', ['$scope', '$http', '$location', 'credenciales', fun
 
         $http.post('/login', data)
             .then(function(response) {
-                //alert(JSON.stringify(response.data));
                 credenciales.setCredenciales(response.data);
                 //console.log('Credenciales:' + JSON.stringify(credenciales.getCredenciales()));
                 console.log(response.data[0]);
@@ -228,22 +226,29 @@ app.controller('indexMedico', function($scope, $location) {
         document.getElementById('cabecera').style.display = "none";
         console.log(JSON.parse(sessionStorage.getItem('user')).nombre);
         $scope.medico = JSON.parse(sessionStorage.getItem('user')).nombre;
-        //console.log('Nombre: ' + credenciales.getCredenciales().nombre);
     } else {
         $location.path('/');
     }
 
 });
 
-app.controller('sala', function() {
-    document.getElementById('cabecera').style.display = "none";
+app.controller('sala', function($scope, $location) {
+    if (JSON.parse(sessionStorage.getItem('user'))) {
+        document.getElementById('cabecera').style.display = "none";
+        console.log(JSON.parse(sessionStorage.getItem('user')).nombre);
+        $scope.medico = JSON.parse(sessionStorage.getItem('user')).nombre;
+    } else {
+        $location.path('/');
+    }
 });
 
-app.controller('misConsultas', function() {
-    document.getElementById('cabecera').style.display = "none";
-    let consultas = true;
-    if (!consultas) {
-        alert("Sin consultas. Ponte a trabajar xd");
+app.controller('misConsultas', function($scope, $location) {
+    if (JSON.parse(sessionStorage.getItem('user'))) {
+        document.getElementById('cabecera').style.display = "none";
+        console.log(JSON.parse(sessionStorage.getItem('user')).nombre);
+        $scope.medico = JSON.parse(sessionStorage.getItem('user')).nombre;
+    } else {
+        $location.path('/');
     }
 });
 

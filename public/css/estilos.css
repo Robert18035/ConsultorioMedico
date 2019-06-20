@@ -452,3 +452,49 @@ input[disabled="disabled"] {
         }
     }
 }
+
+
+/* ESTILOS EXTRA */
+
+.xd {
+    color: #111;
+    display: block;
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+.xd:before {
+    border-top: 1px solid rgb(187, 187, 187);
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.xd span {
+    background: #fdfdfd;
+    padding: 0 10px;
+}
+
+.divider {
+    margin-top: 15px;
+    height: 54px;
+    background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, .14), rgba(0, 0, 0, .03) 3px, transparent);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .14), rgba(0, 0, 0, .03) 3px, transparent);
+    z-index: 0;
+    zoom: 1;
+}
+
+.divider:after {
+    display: block;
+    width: 100%;
+    height: 54px;
+    background-color: transparent;
+    background: -webkit-linear-gradient(to right, #fff, rgba(255, 255, 255, 0), #fff);
+    background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0), #fff);
+    z-index: 1;
+    content: "";
+}

@@ -23,13 +23,27 @@
                 </a>
             </div>
             <div class="col">
-                <h6 class="text-sm-right mt-4 fixed">Bienvenido <b>"NombreMédico"</b></h6>
-                <!-- Reemplazar "NombreMédico" por el nombre del médico en sesión -->
+                <h6 class="text-sm-right mt-4 fixed"><i class="fa fa-user-md fa-2x mr-2"></i>Bienvenido <b>{{medico}}</b></h6>
             </div>
         </div>
         <hr>
     </div>
 </nav>
 <nav class="container">
-    <h1>Aquí irá el videochat y el expediente del paciente realizado por la enfermera</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#/indexMed">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Sala de Consultas</li>
+        </ol>
+    </nav>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-6">
+                <h4 class="xd"><span>VideoChat</span></h4>
+            </div>
+            <div class="col-md-6">
+                <h4 class="xd"><span>Expediente del Paciente</span></h4>
+            </div>
+        </div>
+    </div>
 </nav>

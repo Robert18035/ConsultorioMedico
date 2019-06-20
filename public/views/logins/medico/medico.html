@@ -9,6 +9,12 @@
         <li class="consultas">
             <a href="#!misCons" title="Mis Consultas"><i class="fa fa-clipboard fa-3x ml-3 mt-2" aria-hidden="true"></i></a>
         </li>
+        <li class="estadisticas">
+            <a href="#!statistics" title="Estadísticas"><i class="fa fa-table fa-3x ml-3 mt-2" aria-hidden="true"></i></a>
+        </li>
+        <li class="regisEnf">
+            <a href="#!regisEnfermera" title="Registrar Enfermera"><i class="fa fa-user-plus fa-3x ml-3 mt-2" aria-hidden="true"></i></a>
+        </li>
         <li class="logOut">
             <a href="#!indexMed" title="Cerrar Sesión"><i class="fa fa-sign-out fa-4x ml-3" aria-hidden="true"></i></a>
         </li>
@@ -16,12 +22,12 @@
     <!-- Logo y el nombre del médico -->
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-md-6">
                 <a href="#!/indexMed" class="logo ">
                     <img src="/images/logo-consultorio-medico.png" alt="logo" class="mt-1">
                 </a>
             </div>
-            <div class="col">
+            <div class="col-md-6">
                 <h6 class="text-sm-right mt-4 fixed"><i class="fa fa-user-md fa-2x mr-2"></i>Bienvenido <b>{{medico}}</b></h6>
             </div>
         </div>
@@ -31,36 +37,27 @@
 <article class="container">
     <h4 class="xd"><span>Información Básica</span></h4>
 
-    <div class="row">
-        <div class="col-md-8">
-            <img src="../../../images/cruz.png" alt="hola">
+    <div class="row mt-3">
+        <div class="col-md-5 text-center">
+            <img src="../../../images/cruz.png" alt="hola" id="medico">
         </div>
-        <div class="col-md-4 table-responsive">
-            <table class="table">
-                <caption>List of users</caption>
+        <div class="col-md-7">
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">ID Médico</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">correo</th>
+                        <th scope="col">Correo</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
-                            <p ng-model="id">{{id}}</p>
-                        </td>
-                        <td>
-                            <p ng-model="nombre">{{nombre}}</p>
-                        </td>
-                        <td>
-                            <p ng-model="correo">{{correo}}</p>
-                        </td>
-
+                        <th ng-model="id" scope="row">{{id}}</th>
+                        <td ng-model="id">{{nombre}}</td>
+                        <td ng-model="id">{{correo}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-    </div>
 </article>
 <div class="divider"></div>

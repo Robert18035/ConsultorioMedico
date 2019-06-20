@@ -52,17 +52,6 @@ app.config(function($routeProvider) {
             templateUrl: "../views/logins/medico/consultas.html",
             controller: "misConsultas"
         })
-        // Este controlador supongo que debe de llevar a un controlador de cerrar sesión (?) 
-        // De mientras lo voy a dejar comentado, si lo dejo activo se traba la página (idk) 
-        /*.when("/logOut", {
-            templateUrl: "../index.html"
-        })*/
-        /* -------------------------PÁGINAS DE LA ENFERMERA---------------------------------- */
-        /* -------------------------PÁGINAS DEL ADMINISTRADOR---------------------------------- */
-        .when("/admin", {
-            templateUrl: "../views/logins/admin/admin.html",
-            controller: "indexAdmin"
-        })
         .when("/statistics", {
             templateUrl: "../views/logins/admin/estadisticas.html",
             controller: "stds"
@@ -72,13 +61,30 @@ app.config(function($routeProvider) {
             controller: "registroEnf"
         })
         .when("/enfermera-success", {
-            templateUrl: "../views/principal.html",
+            templateUrl: "../views/logins/medico/medico.html",
             controller: "registroEnf"
         })
-        /* -------------------------ERROR---------------------------------- */
-        .otherwise({
-            templateUrl: "../views/error.html"
-        });
+        // Este controlador supongo que debe de llevar a un controlador de cerrar sesión (?) 
+        // De mientras lo voy a dejar comentado, si lo dejo activo se traba la página (idk) 
+        /*.when("/logOut", {
+            templateUrl: "../index.html"
+        })*/
+        /* -------------------------PÁGINAS DE LA ENFERMERA---------------------------------- */
+        .when("/indexEnf", {
+            templateUrl: "../views/logins/enfermera/enfermera.html",
+            controller: "indexEnf"
+        })
+        /* -------------------------PÁGINAS DEL ADMINISTRADOR---------------------------------- 
+        .when("/admin", {
+            templateUrl: "../views/logins/admin/admin.html",
+            controller: "indexAdmin"
+        })
+*/
+
+    /* -------------------------ERROR---------------------------------- */
+    .otherwise({
+        templateUrl: "../views/error.html"
+    });
 });
 /* NUNCA BORRAR ESTE CONTROLADOR */
 app.controller('homeController', function($scope) {
@@ -260,11 +266,13 @@ app.controller('indexMedico', function($scope, $location, $http) {
 app.controller('sala', function($scope, $location) {
     if (JSON.parse(sessionStorage.getItem('user'))) {
         document.getElementById('cabecera').style.display = "none";
-        console.log(JSON.parse(sessionStorage.getItem('user')).nombre);
         $scope.medico = JSON.parse(sessionStorage.getItem('user')).nombre;
     } else {
         $location.path('/');
     }
+    $scope.iniciar = function() {
+
+    };
 });
 
 app.controller('misConsultas', function($scope, $location) {
@@ -277,51 +285,15 @@ app.controller('misConsultas', function($scope, $location) {
     }
 });
 
-//--------------------------------PÁGINAS DEL ADMINISTRADOR------------------------------
 
-app.controller('indexAdmin', function() {
-    document.getElementById('cabecera').style.display = "none";
-
-});
-app.controller('stds', function() {
-    document.getElementById('cabecera').style.display = "none";
-    var ctx = document.getElementById('chart');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
+app.controller('stds', function($scope, $location) {
+    if (JSON.parse(sessionStorage.getItem('user'))) {
+        document.getElementById('cabecera').style.display = "none";
+        console.log(JSON.parse(sessionStorage.getItem('user')).nombre);
+        $scope.medico = JSON.parse(sessionStorage.getItem('user')).nombre;
+    } else {
+        $location.path('/');
+    }
 });
 //------------------------------------Verificacion cuenta-------------------------------------
 
@@ -353,11 +325,21 @@ app.controller('verificacion', ['$scope', '$location', '$http', function($scope,
     };
 }]);
 
-/* ------------------------------ FORMULARIO REGISTRO ENFERMERA -----------------------------*/
-app.controller('registroEnf', ['$scope', '$location', function($scope, $location) {
+/* ------------------------------ PÁGINAS DE LA ENFERMERA -----------------------------*/
+app.controller('registroEnf', function($scope, $location) {
+    if (JSON.parse(sessionStorage.getItem('user'))) {
+        document.getElementById('cabecera').style.display = "none";
+        console.log(JSON.parse(sessionStorage.getItem('user')).nombre);
+        $scope.medico = JSON.parse(sessionStorage.getItem('user')).nombre;
+    } else {
+        $location.path('/');
+    }
+});
+
+app.controller('indexEnf', function($scope, $location) {
+
     document.getElementById('cabecera').style.display = "none";
-    $scope.enfermera = [];
-    $scope.registrarEnf = function() {
-        $location.path('/enfermera-success');
-    };
-}]);
+
+});
+
+app.controller('')

@@ -39,6 +39,52 @@ ul#navigation li a:hover {
     transition: .3s ease-out;
 }
 
+
+/*------------------------------------------------
+    BARRA DE NAVEGACIÓN LATERAL PARA LA ENFERMERA
+--------------------------------------------------*/
+
+ul#navigationE {
+    position: fixed;
+    margin: 0px;
+    padding: 0px;
+    top: 50px;
+    left: 0px;
+    list-style: none;
+    z-index: 9999;
+}
+
+ul#navigationE li {
+    width: 100px;
+}
+
+ul#navigationE li a {
+    display: block;
+    margin-left: -81px;
+    width: 100px;
+    height: 70px;
+    background-color: rgb(248, 178, 213);
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid rgb(168, 2, 85);
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-radius: 0px 10px 10px 0px;
+    opacity: 0.6;
+    box-shadow: 0px 4px 3px #000;
+    transition: .3s ease-in;
+    color: #000;
+}
+
+ul#navigationE li a:hover {
+    margin-left: -2px;
+    transition: .3s ease-out;
+}
+
+#enf {
+    border: 1.5px solid rgb(230, 112, 180);
+}
+
 hr {
     border: 1.5px solid rgb(22, 184, 221);
 }
@@ -49,7 +95,7 @@ hr {
 
 /*----------------------------------------
     BARRA DE NAVEGACIÓN DEL ADMINISTRADOR
-------------------------------------------*/
+------------------------------------------
 
 .admin {
     background: #949494;
@@ -124,4 +170,9 @@ hr {
         color: #ffffff;
         border-bottom: 4px solid;
     }
+}*/
+
+#medico {
+    width: 50%;
+    height: 100%;
 }

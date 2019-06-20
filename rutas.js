@@ -24,7 +24,14 @@ module.exports = app => {
         console.log(user.idMed);
     });
 
+    app.get('/keyEnf/:nombre', )
+
     //******************** POST *****************************************
+
+    app.post('/llave', async(req, res) => {
+        let llave = req.body;
+        console.log(llave);
+    });
 
     app.post('/registroMed', async(req, res) => {
         console.log("entro al metodo post registro medico");

@@ -13,7 +13,7 @@
         "browserify": "^16.2.3",
         "chart.js": "^2.8.0",
         "ejs": "^2.6.2",
-        "express": "^4.17.1",
+        "express": "^4.17.3",
         "getusermedia": "^2.0.1",
         "mysql": "^2.17.1",
         "nodemailer": "^6.2.1",
